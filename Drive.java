@@ -22,37 +22,5 @@ public class Drive
 		myQueueList.enqueue("Mr. M");
 		myQueueList.enqueue("Noman");
 		System.out.println(myQueueList.toString());
-		
-//		testStackList();
-//		testQueueList();
-	}
-	
-	private static void testStackList()
-	{
-		StackList myStackList = new StackList();
-		
-		myStackList.push("One");
-		myStackList.push("Two");
-		myStackList.push("Three");
-		System.out.println(myStackList.toString());
-		System.out.println(myStackList.search("One"));
-		System.out.println(myStackList.search("Two"));
-		System.out.println(myStackList.search("Three"));
-		System.out.println(myStackList.search("Not in list"));
-		myStackList.pop();
-		System.out.println(myStackList.toString());
-		System.out.println(myStackList.peek());
-	}
-	
-	private static void testQueueList()
-	{
-		QueueList myQueueList = new QueueList();
-		
-		myQueueList.enqueue("One");
-		myQueueList.enqueue("Two");
-		myQueueList.enqueue("Three");
-		System.out.println(myQueueList.toString());
-		myQueueList.dequeue();
-		System.out.println(myQueueList.toString());
 	}
 }

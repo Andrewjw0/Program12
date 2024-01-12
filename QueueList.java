@@ -15,8 +15,6 @@ public class QueueList implements Queue
 		
 		ListNode temp = (ListNode) getFront();
 		
-//		System.out.println(temp.toString());
-		
 		while (temp.getNext().getNext() != null)
 		{
 			temp = temp.getNext();
