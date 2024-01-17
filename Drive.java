@@ -2,6 +2,9 @@ package program12;
 
 public class Drive
 {
+	/**
+	 * Tests the push and toString methods on StackList, and tests the enqueue and toString methods on QueueList.
+	 */
 	public static void main(String a[]) 
 	{
 		StackList myStackList = new StackList();
