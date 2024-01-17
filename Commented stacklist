@@ -1,0 +1,84 @@
+package program12;
+
+public class StackList implements Stack {
+
+private LinkedList list = new LinkedList();
+
+
+	/**
+	 * The isEmpty method returns the new 
+	 * linkedlist as empty.
+	 */
+	public boolean isEmpty()
+	{
+		return list.isEmpty();	
+	}
+	
+	/**
+	 * The push method adds an object to the 
+	 * front of the list.
+	 */
+	public Object push(Object e)
+	{
+		list.addFront(e);		
+		return e;
+	}
+	
+	/**
+	 * The pop method gets and returns the 
+	 * element at the front of the list.
+	 */
+	public Object pop()
+	{
+		return list.getFront();	
+	}
+	
+	/**
+	 * The peek method gets the element at the front of the list,
+	 * adds it to the front of the list, and returns
+	 * the element.
+	 */
+	public Object peek() 
+	{
+		Object temp = list.getFront();
+		list.addFront(temp);
+		return temp;
+	}
+	
+	public int search(Object e)
+	{
+		int index = 1;
+		ListNode temp = (ListNode) peek();
+		
+		while (temp != null)
+		{
+			if (temp.getElement().equals(e)) return index;
+			temp = temp.getNext();
+			index++;
+		}
+		
+		return -1;
+	}
+	
+	/**
+	 * The string method prints the elements.
+	 */
+	public String toString()
+	{
+		String t = "StackList: ";
+		
+		if (isEmpty()) return t;
+		
+		ListNode temp = (ListNode) peek();
+		
+		while (temp.getNext() != null)
+		{
+			t += temp.getElement() + "->";
+			temp = temp.getNext();
+		}
+		
+		t += temp.getElement();
+		
+		return t;
+	}
+}
