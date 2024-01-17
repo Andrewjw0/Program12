@@ -1,7 +1,7 @@
 package program12;
 
 /**
- * Group: Logan Yeager, Andrew Wang, Sophie Byron, Dylan ?
+ * Group: Logan Yeager, Andrew Wang, Sophie Byron, Dylan Peel
  * Class: AP CSA 3rd hour
  * Date:  1/17/2024
  * Descr: ListNode is a single object that "holds" another object with Object element.
