@@ -7,6 +7,7 @@ package program12;
  * Descr: ListNode is a single object that "holds" another object with Object element.
  *        It also has a field variable ListNode next, which is the next in the sequence.
  *        ListNode will be used in LinkedList, a class that uses multiple ListNodes.
+ */
 public class ListNode 
 {
 	private Object element;   // field variable, what node "holds"
