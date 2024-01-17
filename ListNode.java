@@ -25,9 +25,10 @@ public class ListNode
 	/**
 	 * Main constructor method, parameters for both field variables
 	 */
-	public ListNode(Object e)
+	public ListNode(Object e, ListNode n)
 	{
 		element = e;
+		next = n;
 	}
 
 	// getElement() returns object inside node
