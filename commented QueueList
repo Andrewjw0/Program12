@@ -1,0 +1,89 @@
+package program12;
+
+public class QueueList implements Queue {
+	
+private LinkedList list = new LinkedList();
+	
+	public boolean isEmpty()
+	{
+		return list.isEmpty();
+	}
+	
+	/**
+	 * The dequeue method gets the next element in the list 
+	 * and returns the next element in the list. 
+	 */
+	public Object dequeue()
+	{
+		if (isEmpty()) return null;
+		
+		ListNode temp = (ListNode) getFront();
+		
+//		System.out.println(temp.toString());
+		
+		while (temp.getNext().getNext() != null)
+		{
+			temp = temp.getNext();
+		}
+		
+		ListNode returner = temp.getNext();
+		temp.setNext(null);
+		
+		return returner;
+	}
+	
+	/**
+	 * The enqueue method adds an element to the front of the
+	 * list or "queue"
+	 */
+	public Object enqueue(Object e)
+	{
+		list.addFront(e);
+		return null;
+	}
+	
+	/** 
+	 * The getBack method gets and returns the 
+	 * element in the back of the list.
+	 */
+	public Object getBack()
+	{
+		Object temp = list.getBack();
+		list.addBack(temp);
+		return temp;
+	}
+	
+	/**
+	 * The getFront method gets and returns 
+	 * the element in the front of the list.
+	 */
+	public Object getFront()
+	{
+		Object temp = list.getFront();
+		list.addFront(temp);
+		return temp;
+	}
+	
+	/**
+	 * The String method prints the elements in the list.
+	 */
+	public String toString()
+	{
+		String t = "QueueList: ";
+		
+		if (isEmpty()) return t;
+		
+		ListNode temp = (ListNode) getFront();
+		
+		while (temp.getNext() != null)
+		{
+			t += temp.getElement() + "->";
+			temp = temp.getNext();
+		}
+		
+		t += temp.getElement();
+		
+		return t;
+	}
+
+}
