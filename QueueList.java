@@ -3,7 +3,11 @@ package program12;
 public class QueueList implements Queue 
 {
 	private LinkedList list = new LinkedList();
-	
+
+	/**
+	 * isEmpty() returns a boolean.
+	 * if start == null, that means the list has to be empty.
+	 */
 	public boolean isEmpty()
 	{
 		return list.isEmpty();
