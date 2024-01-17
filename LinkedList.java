@@ -62,7 +62,6 @@ public class LinkedList
 	 */
 	public void addFront(Object e)
 	{
-		// contingency in case e is a node?
 		start = new ListNode(e, start);
 	}
 
@@ -71,7 +70,6 @@ public class LinkedList
 	 */
 	public void addBack(Object e)
 	{
-		// contingency in case e is a node?
 		ListNode temp = start;
 		
 		while (temp.getNext() != null)
