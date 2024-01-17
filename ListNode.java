@@ -28,7 +28,6 @@ public class ListNode
 	public ListNode(Object e, ListNode n)
 	{
 		element = e;
-		next = n;
 	}
 
 	// getElement() returns object inside node
@@ -58,6 +57,6 @@ public class ListNode
 	 */
 	public boolean equals(Object e)
 	{
-		return element.equals(e.getElement()); // changed this, check?
+		return element.equals(e);
 	}
 }
