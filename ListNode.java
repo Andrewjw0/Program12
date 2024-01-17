@@ -25,7 +25,7 @@ public class ListNode
 	/**
 	 * Main constructor method, parameters for both field variables
 	 */
-	public ListNode(Object e, ListNode n)
+	public ListNode(Object e)
 	{
 		element = e;
 	}
