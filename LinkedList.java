@@ -29,7 +29,7 @@ public class LinkedList
 	{
 		if (isEmpty()) return null;
 		
-		Object temp = start;
+		Object temp = start.getElement();
 		start = start.getNext();
 		return temp;
 	}
@@ -51,7 +51,7 @@ public class LinkedList
 			temp = temp.getNext();
 		}
 		
-		Object last = temp.getNext();
+		ListNode last = temp.getNext();
 		temp.setNext(null);
 		
 		return last;
