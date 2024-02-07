@@ -1,0 +1,59 @@
+package maps;
+
+public class TreeNode {
+	private Object   element;
+	private TreeNode left, right;
+	
+	public TreeNode() {
+		element = null;
+		left    = null;
+		right   = null;
+	}
+	
+	public TreeNode(Object e) {
+		element = e;
+	}
+	
+	public Object getElement() {
+		return element;
+	}
+	
+	public TreeNode getLeft() {
+		return left;
+	}
+	
+	public TreeNode getRight() {
+		return right;
+	}
+	
+	public void setElement(Object e) {
+		element = e;
+	}
+	
+	public void setRight(Object e) {
+		right = new TreeNode(e);
+	}
+	
+	public void setLeft(Object e) {
+		left = new TreeNode(e);
+	}
+	
+	public boolean equals(Object e) {
+		if (element == e) return true;
+		return false;
+	}
+	
+	public int compareTo(Comparable<Object> e) {
+		return ((Comparable)(element)).compareTo(e);
+	}
+	
+	public boolean isLeaf() {
+		if (left == null 
+		&& right == null) return true;
+		else return false;
+	}
+	
+	public String toString() {
+		return element.toString() + "->";
+	}
+}
