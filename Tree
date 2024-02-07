@@ -1,0 +1,165 @@
+package maps;
+
+import java.util.ArrayList;
+
+public class Tree {
+	private TreeNode root;
+	
+	public Tree(Object e) {
+		root = new TreeNode(e);
+	}
+	
+	public Tree() {
+		root = null;
+	}
+	
+	public void add(Comparable<Object> e) {
+		if (root == null) {
+			root = new TreeNode(e);
+			return;
+		}
+		TreeNode temp = root;
+		while (!temp.isLeaf()) {
+			if (e.compareTo(temp.getElement()) > 0) {
+				if (temp.getRight() == null) {
+					temp.setRight(e);
+					return;
+				}
+				temp = temp.getRight();
+			}
+			else{
+				if(temp.getLeft() == null) {
+					temp.setLeft(e);
+					return;
+				}
+				temp = temp.getLeft();
+			}
+		}
+		if (temp.compareTo(e) < 0) {
+			temp.setRight(e);
+		}
+		else temp.setLeft(e);
+	}
+	
+	public boolean search(Comparable<Object> c) {
+		if (root == null) return false;
+		if (root.getElement().equals(c)) return true;
+		TreeNode node = root;
+		while (node != null) {
+			if (node.compareTo(c) == 0) return true;
+			else {
+				if(node.compareTo(c) < 0) node = node.getRight();
+				else if (node.compareTo(c) > 0) node = node.getLeft();
+			}
+		}
+		return false;
+	}
+	
+	public int height(TreeNode r) {
+		if (r == null) return 0;
+		return 1 + Math.max(height(r.getLeft()), height(r.getRight()));
+	}
+	
+	public int height() {
+		return height(root);
+	}
+	
+	private String preOrderHelper(TreeNode t) {
+		if (t == null) return "";
+		return t.toString() + preOrderHelper(t.getLeft())
+							+ preOrderHelper(t.getRight());
+	}
+	
+	public String toStringPreOrder() {
+		return preOrderHelper(root);
+	}
+	
+	private String inOrderHelper(TreeNode t) {
+		if (t == null) return "";
+		return inOrderHelper(t.getLeft()) + t.toString() +
+		       inOrderHelper(t.getRight());
+	}
+	
+	public String toStringInOrder() {
+		return inOrderHelper(root);
+	}
+	
+	private TreeNode searchNode(Comparable c) {
+		if (root == null) return null;
+		if (root.equals(c)) return root;
+		TreeNode node = root;
+		while (node != null) {
+			if (node.compareTo(c) == 0) return node;
+			else {
+				if(node.compareTo(c) < 0) node = node.getRight();
+				else if (node.compareTo(c) > 0) node = node.getLeft();
+			}
+		}
+		return node;
+	}
+	
+	private TreeNode getParent(Comparable c, TreeNode t) {
+		if (!search(c)) return null;
+		if (t.compareTo(c) < 0) {
+			if (t.getRight().equals(c)) return t;
+			return getParent(c, t.getRight());
+		}
+		if (t.getLeft().equals(c)) return t;
+		return getParent(c, t.getLeft());
+	}
+//	
+//	private void rebuild(TreeNode t) {
+//		add((Comparable)(t.getRight().getElement()));
+//		if(!t.isLeaf()) {
+//			if(t.getLeft() != null) rebuild(t.getLeft());
+//			if(t.getRight() != null) rebuild(t.getRight());
+//		}
+//	}
+//	
+//	public void remove(Comparable c) {
+//		if (!search(c)) return;
+//		if (root.equals(c)) {
+//			TreeNode build = root.getRight();
+//			root = root.getLeft();
+//			rebuild(build);
+//			return;
+//		}
+//		TreeNode parent = getParent(c,root);
+//		System.out.println(parent.toString());
+//		if (parent.getLeft().equals(c)) {
+//			TreeNode removed = parent.getLeft();
+//			parent.setLeft(removed);
+//			rebuild(removed);
+//		}
+//		else {
+//			TreeNode child = parent.getRight();
+//			parent.setRight(null);
+//			rebuild(child);
+//		}
+//	}
+	
+	public void remove(Comparable c) {
+		TreeNode delNode = searchNode(c);
+		TreeNode delParent = getParent(c,root);
+		if (delNode.isLeaf() ||
+		   (delNode.getLeft() == null || delNode.getRight() == null)) {
+		    if (delParent.getLeft() == delNode) {
+		    	delParent.setLeft(delNode.getLeft());
+		    }
+			else if (delParent.getRight() == delNode) {
+				delParent.setRight(delNode.getRight());
+			}
+		}
+		else {
+			TreeNode smallestBigger = delNode;
+			while (smallestBigger.getLeft() != null) {
+				smallestBigger = smallestBigger.getLeft();
+			}
+			TreeNode parentSmallestBigger = getParent((Comparable)(smallestBigger.getElement()),root);
+			parentSmallestBigger.setRight(smallestBigger.getRight());
+			if (delParent.getLeft() == delNode) delParent.setLeft(smallestBigger);
+			else if (delParent.getRight() == delNode) delParent.setRight(smallestBigger);
+		}
+	    delNode = null;
+	}
+}
